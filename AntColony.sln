@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AntColony", "AntColony\AntColony.csproj", "{77D58099-30E1-4800-9894-F76717D3AF5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77D58099-30E1-4800-9894-F76717D3AF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D58099-30E1-4800-9894-F76717D3AF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D58099-30E1-4800-9894-F76717D3AF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D58099-30E1-4800-9894-F76717D3AF5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E617DDAB-9E4B-428B-A4C3-1515F2631BD5}
+	EndGlobalSection
+EndGlobal
