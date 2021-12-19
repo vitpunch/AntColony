@@ -29,6 +29,8 @@ namespace AntColony
         List<Ant> Ants =new ();
         private readonly int _antHillX = _random.Next(300);
         private readonly int _antHillY = _random.Next(300);
+        private int counter = 0;
+
         public MainWindow()
         {
             
@@ -50,36 +52,43 @@ namespace AntColony
         }
         private void go_Tick(object? sender, EventArgs e)
         {
-            foreach (var ant in Ants)
-            {
-                ant.Go();
-            } 
+            counterOfIteration.Content = counter++;
+            // foreach (var ant in Ants)
+            // {
+            //     ant.Go();
+            // } 
             AddAntsToField(Ants);
         }
         private void AddAntsToField(List<Ant> ants)
         {
-            Rectangle newAntToDraw;          
+            RectangleGeometry newAntToDraw;          
             TransformGroup transformGroup;
             antField.Children.Clear();
             antField.Children.Add(AntHill);
 
-
+            Path path = new Path();
             SolidColorBrush brush = new();
+            brush.Color = Colors.Black;
+            DrawingVisual drawingVisual = new DrawingVisual();
+            DrawingContext drawingContext = drawingVisual.RenderOpen();
+
+            
             foreach (var ant in Ants)
             {
                 ant.Go();
-                newAntToDraw = new Rectangle();
-                transformGroup = new();
-                transformGroup.Children.Add(new TranslateTransform(ant.X, ant.Y));
-                transformGroup.Children.Add(new RotateTransform(360-ant.Direction,ant.X,ant.Y));
-                newAntToDraw.RenderTransform = transformGroup;
-                brush.Color = Colors.Black;
-                newAntToDraw.Fill = new SolidColorBrush(Color.FromRgb(0,0,0));
-                newAntToDraw.Width = 6;
-                newAntToDraw.Height = 3;
-                antField.Children.Add(newAntToDraw);
-                
+                drawingContext.DrawRectangle(
+                    brush,
+                    (System.Windows.Media.Pen)null,
+                    new Rect(
+                        ant.X,
+                        ant.Y,
+                        10,
+                        5
+                        )
+                    );
+
             }
+            drawingContext.Close();
         }
     }
 }

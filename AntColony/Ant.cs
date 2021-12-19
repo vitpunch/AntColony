@@ -7,9 +7,9 @@ namespace AntColony
 {
     internal interface Ant
     {
-        public double X { get; set; }
-        public double Y { get; set; }
-        double Direction { get; set; }
+        public int X { get;  }
+        public int Y { get;  }
+        int Direction { get; set; }
         
         public void Go();
     }
