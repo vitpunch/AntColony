@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AntColony
 {
-    internal interface Ant
+    internal interface IAnt : IAnimal
     {
         public int X { get;  }
         public int Y { get;  }

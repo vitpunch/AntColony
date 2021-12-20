@@ -20,7 +20,7 @@
         <Button Grid.Column="0"  Grid.Row="0" Content="дать еды"></Button>
         <Button Grid.Column="0"  Grid.Row="1"  Content="запустить враговдать еды"></Button>
         <Canvas x:Name="antField" Grid.Column="1"  Grid.RowSpan="2" Background="Green">
-            <Ellipse Name="AntHill" Width="20" Height="20" Fill="SaddleBrown" Canvas.Left="20" Canvas.Top="20" ></Ellipse>
+            <Ellipse Name="antHill" Width="20" Height="20" Fill="SaddleBrown" Canvas.Left="20" Canvas.Top="20" ></Ellipse>
         </Canvas>
     </Grid>
 </Window>

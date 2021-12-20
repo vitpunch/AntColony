@@ -1,21 +1,18 @@
 ﻿using System;
+using static AntColony.Configuration;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AntColony
 {
-    internal class Worker :Ant
+    internal class Worker :IAnt
     {
+        public int Health { get; } = WorkerInitHealth;
         static readonly Random _random = new();
         private int _hikeLength;
         private double _x, _y;
-        public int X {
-            get
-            {
-                return (int)_x;
-            }
-        }
+        public int X { get { return (int)_x; } }
         public int Y {
             get
             {
@@ -30,7 +27,6 @@ namespace AntColony
             _x = x; _y = y;
             Direction =  _random.Next(360);
             _hikeLength = _random.Next(500);
-
         }
         public void Go()
         {
