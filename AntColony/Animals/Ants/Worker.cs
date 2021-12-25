@@ -1,10 +1,7 @@
 ﻿using System;
 using static AntColony.Configuration;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AntColony
+namespace AntColony.Animals.Ants
 {
     internal class Worker :IAnt
     {
@@ -13,20 +10,13 @@ namespace AntColony
         private int _hikeLength;
         private double _x, _y;
         public int X { get { return (int)_x; } }
-        public int Y {
-            get
-            {
-                return (int)_y;
-            }
-        }
+        public int Y { get { return (int)_y; } }
         public int Direction { get; set; }
-
-
         public Worker(int x, int y)
         {
             _x = x; _y = y;
-            Direction =  _random.Next(360);
-            _hikeLength = _random.Next(500);
+            Direction =  Rand(360);
+            _hikeLength = Rand(AntMaxHike);
         }
         public void Go()
         {

@@ -5,9 +5,11 @@ namespace AntColony;
 
 public static class Configuration
 {
-    public static readonly Random _random=new Random();
-    public static int FieldSizeX { get; } = 500;
-    public static int FieldSizeY { get; } = 500;
+    public static int WorkerPrice { get; } = 10;
+    static readonly Random _random=new Random();
+    public static int FieldSizeX { get; } = 1000;
+    public static int FieldSizeY { get; } = 1000;
+    public static int AntMaxHike { get; } = 100;
     public static int WorkerInitHealth { get; } = 50;
     public readonly static IDrawer drawer = new WpfDrawer();
 

@@ -1,19 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using AntColony.Animals;
+using AntColony.Animals.Ants;
 using static AntColony.Configuration;
 
 namespace AntColony;
 
 public static class AntHill
 {
+    public static int Eat { get; set; }
+    public static int X { get; set; }
+    public static int Y { get; set; }
     static List<IAnt> Ants =new ();
-    public static int X { get; }
 
-    public static int Y { get; }
-
-    static AntHill()
+    public static void WorkerBorn()
     {
-        X = Rand(FieldSizeX);
-        Y = Rand(FieldSizeY);
+        if (Eat >= WorkerPrice)
+        {
+            Eat -= WorkerPrice;
+            Ants.Add(new Worker(X,Y));
+        }
     }
 }

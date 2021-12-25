@@ -1,4 +1,4 @@
-﻿<Window x:Class="AntColony.MainWindow"
+﻿<Window x:Class="AntColony.StartWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,21 +6,19 @@
         xmlns:local="clr-namespace:AntColony"
         mc:Ignorable="d"
         Title="MainWindow" WindowStyle="SingleBorderWindow" WindowState="Maximized">
-    <Grid ShowGridLines="True" Width="500" Height="500">
+    <Grid ShowGridLines="True" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
-        <Label x:Name="counterOfIteration" Grid.Row="2" Grid.Column="0" Content="проход"></Label>
-        <Button Grid.Column="0"  Grid.Row="0" Content="дать еды"></Button>
-        <Button Grid.Column="0"  Grid.Row="1"  Content="запустить враговдать еды"></Button>
-        <Canvas x:Name="antField" Grid.Column="1"  Grid.RowSpan="2" Background="Green">
-            <Ellipse Name="antHill" Width="20" Height="20" Fill="SaddleBrown" Canvas.Left="20" Canvas.Top="20" ></Ellipse>
+        <Button Grid.Column="0"  Grid.Row="0" Content="set anthill" Click="Set_AntHill" x:Name="setAntHillBtn"></Button>
+        <Button Grid.Column="0"  Grid.Row="1"  Content="Worker+" Click="WorkerBorn"></Button>
+        <Canvas x:Name="antField" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="Green">
         </Canvas>
     </Grid>
 </Window>

@@ -1,6 +1,4 @@
-﻿using System.Dynamic;
-
-namespace AntColony;
+﻿namespace AntColony.Animals;
 
 
 public interface IAnimal
