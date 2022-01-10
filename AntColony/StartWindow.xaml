@@ -6,19 +6,30 @@
         xmlns:local="clr-namespace:AntColony"
         mc:Ignorable="d"
         Title="MainWindow" WindowStyle="SingleBorderWindow" WindowState="Maximized">
-    <Grid ShowGridLines="True" >
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0"  Grid.Row="0" Content="set anthill" Click="Set_AntHill" x:Name="setAntHillBtn"></Button>
-        <Button Grid.Column="0"  Grid.Row="1"  Content="Worker+" Click="WorkerBorn"></Button>
-        <Canvas x:Name="antField" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="Green">
-        </Canvas>
+        <Button Grid.Column="0"  Grid.Row="0"  Content="Worker+" Click="WorkerBorn"></Button>
+        <StackPanel Grid.Row="1">
+            <Button  Height="50" Content="+" />
+            <Button  Height="50" Content="-" />
+        </StackPanel>
+
+        <DockPanel LastChildFill="True" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                   MinWidth="200" MinHeight="200">
+            <Button DockPanel.Dock="Top" MinHeight="30" Content="Вверх" />
+            <Button DockPanel.Dock="Bottom" MinHeight="30" Content="Вниз" />
+            <Button DockPanel.Dock="Left" MinWidth="30" Content="Л" />
+            <Button DockPanel.Dock="Right" MinWidth="30" Content="П" />
+            <Canvas x:Name="antField" ClipToBounds="False" Background="Green" />
+        </DockPanel>
+        
     </Grid>
 </Window>

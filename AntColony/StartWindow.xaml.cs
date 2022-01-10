@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
+using static AntColony.Configuration;
+using System.Windows.Controls;
 using System.Windows.Threading;
+using AntColony.Drawers;
 
 namespace AntColony
 {
@@ -12,18 +15,19 @@ namespace AntColony
     {
         public StartWindow()
         {
+            mainWindow = this;
             Initializer.Init();
             InitializeComponent();
-        }
-        private void Set_AntHill(object sender, RoutedEventArgs e)
-        {
-            setAntHillBtn.IsEnabled = false;
             Field.SetAntHill();
         }
-
         private void WorkerBorn(object sender, RoutedEventArgs e)
         {
-            AntHill.WorkerBorn();
+            for (int i = 0; i < 100; i++)
+            {
+                AntHill.WorkerBorn();
+                Field.Go();
+            }
+
         }
     }
 }

@@ -7,7 +7,7 @@ namespace AntColony;
 
 public static class AntHill
 {
-    public static int Eat { get; set; }
+    public static int Eat { get; set; } = 100000;
     public static int X { get; set; }
     public static int Y { get; set; }
     static List<IAnt> Ants =new ();
@@ -17,7 +17,8 @@ public static class AntHill
         if (Eat >= WorkerPrice)
         {
             Eat -= WorkerPrice;
-            Ants.Add(new Worker(X,Y));
+            Field.AntBorn(new Worker(X, Y));
+            // Ants.Add(new Worker(X,Y));
         }
     }
 }

@@ -3,5 +3,5 @@
 public interface IDrawer
 {
     void DrawAntHill();
-    void DrawAllAnts();
+    void DrawAllAnts(Cell[,] cells);
 }
