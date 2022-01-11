@@ -11,7 +11,7 @@ public class Initializer
     {
         DispatcherTimer go = new DispatcherTimer();
         go.Tick += go_Tick;
-        go.Interval = new TimeSpan(0,0,0,0,40);
+        go.Interval = new TimeSpan(0,0,0,0,50);
         go.Start();     
     }
     private static void go_Tick(object? sender, EventArgs e)
