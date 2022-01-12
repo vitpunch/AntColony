@@ -5,4 +5,5 @@ public interface IAnimal
 {
     public int Health { get; }
     public void Go();
+    public void SetNewDirection();
 }

@@ -13,6 +13,7 @@ namespace AntColony
 
     public partial class StartWindow : Window
     {
+        public int animakCount;
         public StartWindow()
         {
             mainWindow = this;
@@ -22,12 +23,18 @@ namespace AntColony
         }
         private void WorkerBorn(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 500; i++)
             {
-                AntHill.WorkerBorn();
-                Field.Go();
+                Field.AntBorn();
             }
-
+        }
+        private void ScaleDown(object sender, RoutedEventArgs e)
+        {
+            drawer.ScaleDown();
+        }
+        private void ScaleUp(object sender, RoutedEventArgs e)
+        {
+            drawer.ScaleUp();
         }
     }
 }

@@ -1,24 +1,23 @@
 ﻿using System.Collections.Generic;
+using System.Drawing;
 using AntColony.Animals;
 using AntColony.Animals.Ants;
 using static AntColony.Configuration;
 
 namespace AntColony;
 
-public static class AntHill
+public class AntHill
 {
-    public static int Eat { get; set; } = 100000;
-    public static int X { get; set; }
-    public static int Y { get; set; }
+    public int Eat { get; set; } = 900000;
+    public Point Center;
     static List<IAnt> Ants =new ();
 
-    public static void WorkerBorn()
+    public AntHill(int centerX, int centerY)
     {
-        if (Eat >= WorkerPrice)
-        {
-            Eat -= WorkerPrice;
-            Field.AntBorn(new Worker(X, Y));
-            // Ants.Add(new Worker(X,Y));
-        }
+        Center = new Point(centerX, centerY);
+    }
+    public IAnimal GetNewAnt()
+    {
+        return new Worker(Center.X, Center.Y);
     }
 }

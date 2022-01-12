@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using AntColony.Animals;
 using AntColony.Animals.Ants;
@@ -9,6 +10,8 @@ namespace AntColony;
 public static class Field
 {
     private static Cell[,] _cells = new Cell[FieldSizeX, FieldSizeY];
+    private static List<AntHill> _antHills = new List<AntHill>();
+    private static List<IAnimal> _animals = new List<IAnimal>();
 
     static Field()
     {
@@ -22,34 +25,23 @@ public static class Field
     }
     public static void Go()
     {
-        for (int i = 0; i < FieldSizeY; i++)
+        mainWindow.animakCount = 0;
+        foreach (var animal in _animals)
         {
-            for (int j = 0; j < FieldSizeX; j++)
-            {
-                    _cells[j,i].Go();
-            }
+            animal.Go();
         }
-        drawer.DrawAllAnts(_cells);
+        drawer.DrawAllAnts(_animals);   
+        mainWindow.AnimalCount.Content = mainWindow.animakCount.ToString();
     }
 
     public static void SetAntHill()
     {
-        //установка муравейника на поле
-        AntHill.X = FieldSizeX / 2;//Rand(FieldSizeX-11)+5;
-        AntHill.Y = FieldSizeY / 2;//Rand(FieldSizeY-11)+5;
-        for (int i = -5; i < 6; i++)
-        {
-            for (int j = -5; j < 6; j++)
-            {
-                _cells[j+AntHill.X, i+AntHill.Y].Decor.TypeOfDecor = Decor.TypeDecor.anthill;
-            }
-        }
-        drawer.DrawAntHill();
+        _antHills.Add(new AntHill(FieldSizeX -20, FieldSizeY -20));
     }
 
-    public static void AntBorn(Worker worker)
+    public static void AntBorn()
     {
-        _cells[worker.X, worker.Y].Animal = worker;
+        _animals.Add(_antHills[Rand(_antHills.Count)].GetNewAnt());
     }
 
     public static bool AbilityToMove(Point nextPoint)
@@ -63,8 +55,8 @@ public static class Field
     {
         if(!PermisCoordinates(nextPoint))
             return;
-        _cells[nextPoint.X, nextPoint.Y].Animal = _cells[firstPoint.X, firstPoint.Y].Animal;
-        _cells[firstPoint.X, firstPoint.Y].Animal = null;
+        _cells[nextPoint.X, nextPoint.Y].IsBusy = true;
+        _cells[firstPoint.X, firstPoint.Y].IsBusy = false;
     }
 
     static bool PermisCoordinates(Point point)
@@ -75,5 +67,15 @@ public static class Field
            point.Y>=FieldSizeY)
             return false;
         return true;
+    }
+
+    public static void SetNewDirectionForCollidedAnts(Point firstAnt, Point secondAnt)
+    {
+        _cells[firstAnt.X,firstAnt.Y].Animal.SetNewDirection();
+        if (PermisCoordinates(secondAnt))
+        {
+            if(secondAnt.Y>firstAnt.Y||(secondAnt.Y==firstAnt.Y && secondAnt.X>firstAnt.X))
+                _cells[secondAnt.X, secondAnt.Y].Animal.SetNewDirection();
+        }
     }
 }

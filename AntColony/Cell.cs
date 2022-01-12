@@ -1,4 +1,5 @@
 ﻿using AntColony.Animals;
+using static AntColony.Configuration;
 
 namespace AntColony;
 
@@ -9,15 +10,14 @@ public class Cell
     public int DangerSmell { get; set; }
     public Decor? Decor { get; set; } = new Decor();
     public int Eat { get; set; }
+    public bool IsBusy { get; set; }
 
     public void Go()
     {
-        if (Animal!=null)
-            Animal.Go();
     }
 
     public bool AbilityToMove()
     {
-        return (Animal == null);
+        return !IsBusy;
     }
 }

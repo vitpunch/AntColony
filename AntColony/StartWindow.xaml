@@ -18,8 +18,9 @@
         </Grid.RowDefinitions>
         <Button Grid.Column="0"  Grid.Row="0"  Content="Worker+" Click="WorkerBorn"></Button>
         <StackPanel Grid.Row="1">
-            <Button  Height="50" Content="+" />
-            <Button  Height="50" Content="-" />
+            <Button  Height="50" Content="+" Click="ScaleUp" />
+            <Button  Height="50" Content="-" Click="ScaleDown"/>
+            <Button Height="50" x:Name="AnimalCount"></Button>
         </StackPanel>
 
         <DockPanel LastChildFill="True" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
